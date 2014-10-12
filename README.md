@@ -14,7 +14,7 @@ Yes, it directly reads the LocalStorage sqlite database and outputs valid teams,
 
 Let me know if you run into problems -> open an issue.
 
-= Install = 
+# Install
 * Clone this repo
 * Ensure you have Python 3 (will package it sometime later)
-* Either run main.py to sync your teams ad hoc or install.py -i to install it to your crontab (untested atm)
+* Either run main.py to sync your teams ad hoc or `install.py -i` to install it to your crontab (untested atm)
