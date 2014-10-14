@@ -17,4 +17,4 @@ Let me know if you run into problems -> open an issue.
 # Install
 * Clone this repo
 * Ensure you have Python 3 (will package it sometime later)
-* Either run main.py to sync your teams ad hoc or `install.py -i` to install it to your crontab (untested atm)
+* Either run main.py to sync your teams ad hoc or `install-mac-linux.sh -i`/`install-windows.bat /i` to install it to your crontab (untested atm)
