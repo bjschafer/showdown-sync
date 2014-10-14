@@ -11,11 +11,12 @@
 #
 # Copyright (c) 2014 Braxton J. Schafer
 #
-# Changelog:
+# Changelog: 
+#	-improve help and usage information 10/14/14 bjs
 #
 ##################################################################################################
 OPTIND=1
-VERSION=1
+VERSION=2
 
 tmpfile=/tmp/crontab.old
 pushd `dirname $0` > /dev/null
@@ -70,10 +71,13 @@ function uninstall()
 
 function help()
 {
-	echo "You're hopeless"
+	echo "You're hopeless."
+	usage
 }
 
 function usage()
 {
-	echo "-i to install, -u to uninstall.  Just like magic!"
+	echo "usage: ./install-mac-linux.sh [-iu]"
+	echo "-i Installs program to crontab to run hourly"
+	echo "-u Uninstalls program from crontab"
 }
