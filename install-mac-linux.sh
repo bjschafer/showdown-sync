@@ -11,7 +11,8 @@
 #
 # Copyright (c) 2014 Braxton J. Schafer
 #
-# Changelog: 
+# Changelog:
+#   -fix help function calling 10/20/14 bjs
 #	-improve help and usage information 10/14/14 bjs
 #
 ##################################################################################################
@@ -24,26 +25,6 @@ SCRIPTPATH=`pwd`
 popd > /dev/null
 
 mainfile="$SCRIPTPATH/main.py"
-
-while getopts "iuvh" opt; do
-	case "$opt" in
-		i) install
-			exit 0
-			;;
-		u) uninstall
-			exit 0
-			;;
-		v) echo $version
-			exit 0
-			;;
-		h) help
-			exit 0
-			;;
-		*) usage
-			exit 0
-			;;
-	esac
-done
 
 function install()
 {
@@ -69,15 +50,41 @@ function uninstall()
 	rm $tmpfile
 }
 
-function help()
+function help_me()
 {
 	echo "You're hopeless."
+	echo "-i Installs program to crontab to run hourly"
+	echo "-u Uninstalls program from crontab"
 	usage
 }
 
 function usage()
 {
-	echo "usage: ./install-mac-linux.sh [-iu]"
-	echo "-i Installs program to crontab to run hourly"
-	echo "-u Uninstalls program from crontab"
+	echo "usage: `basename $0` options (-i) (-u) -h for help"
+
 }
+
+if ( ! getopts "iuvh" opt); then
+	usage
+	exit $E_OPTERROR;
+fi
+
+while getopts "iuvh" opt; do
+	case "$opt" in
+		i) install
+			exit 0
+			;;
+		u) uninstall
+			exit 0
+			;;
+		v) echo $VERSION
+			exit 0
+			;;
+		h) help_me
+			exit 0
+			;;
+		*) usage
+			exit 0
+			;;
+	esac
+done
