@@ -16,13 +16,28 @@
 ########################################################################################################################
 from cookie_reader import cookie_reader
 import os
+import configparser
 
-storage_location = os.path.expanduser('~') + '/BTSync/PS Teams/'
+CONFIG_FILE_LOCATION = './.config.ini'
+
+
+def read_config():
+    config = configparser.ConfigParser()
+    config.read(CONFIG_FILE_LOCATION)
+
+    storage_location = config['DEFAULT']['BackupLocation']
+    cookie_location = config['DEFAULT']['LocalStorageLocation']
+    browser_type = config['DEFAULT']['BrowserType']
+
+    return storage_location, cookie_location, browser_type
+
+# storage_location = os.path.expanduser('~') + '/BTSync/PS Teams/'
 
 if __name__ == '__main__':
-    c = cookie_reader()
+    config = read_config()
+    c = cookie_reader(config[1], config[2])
 
     for team in c.read_teams():
-        with open(storage_location + team[0] + ' ' + team[1] + '.txt', 'w+') as f:
-            for p in team[2]:
-                f.write(p.get_text())
+        with open(config[0] + team[0] + ' ' + team[1] + '.txt', 'w+') as f:
+            for mon in team[2]:
+                f.write(mon.get_text())

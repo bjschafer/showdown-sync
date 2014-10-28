@@ -22,8 +22,8 @@ from pokemon import pokemon
 
 class cookie_reader():
 
-    def __init__(self):
-        self.cookie_location = self._get_cookie_location()
+    def __init__(self, cookie_location, browser_type):
+        self.cookie_location = cookie_location
         self._expand_tilde()
         self.filename = "http_play.pokemonshowdown.com_0.localstorage"
 
@@ -35,7 +35,7 @@ class cookie_reader():
             return "~/Library/Application Support/Google/Chrome/Default/Local Storage/"
         elif (platform == 'linux2'):
             return "~/.config/google-chrome/Default/Cookies"
-        elif (platform == 'win32'):
+        elif (platform == 'win32' or platform == 'win64'):
             return "~/AppData/Local/Google/Chrome/User Data/ Default/Local Storage/"
         return "Platform not recognized."
 
