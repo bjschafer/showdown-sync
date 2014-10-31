@@ -12,7 +12,8 @@
 # Copyright (c) 2014 Braxton J. Schafer
 #
 # Changelog:
-#   -fix help function calling 10/20/14 bjs
+#	-interactive install - sync location 10/27/14 bjs
+#	-fix help function calling 10/20/14 bjs
 #	-improve help and usage information 10/14/14 bjs
 #
 ##################################################################################################

@@ -15,7 +15,6 @@
 #
 ########################################################################################################################
 from cookie_reader import cookie_reader
-import os
 import configparser
 
 CONFIG_FILE_LOCATION = './.config.ini'
