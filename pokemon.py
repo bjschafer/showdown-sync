@@ -48,7 +48,10 @@ class pokemon():
         return m
 
     def get_text(self):
-        repr = self.nickname + ' (' + self.species + ') '
+        if self.nickname:
+            repr = self.nickname + ' (' + self.species + ') '
+        else:
+            repr = self.species + ' '
         if self.gender:
             repr += '(' + self.gender + ') '
         repr += '@ ' + self.item + '\n'
